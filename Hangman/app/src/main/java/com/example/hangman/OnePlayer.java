@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,19 +59,53 @@ public class OnePlayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_one_player);
 
-        initializeButtons();
+        initializeViews();
 
-        displayWord = findViewById(R.id.displayWord);
-        image = findViewById(R.id.imageView);
         game = new HangmanGame(this);
 
         setDisplayWord(game.getWordUnderlines());
     }
 
-    private void initializeButtons() {
+    private void initializeViews() {
+        displayWord = findViewById(R.id.displayWord);
+        image = findViewById(R.id.imageView);
         buttonHint = (Button) findViewById(R.id.buttonHint);
-        buttonHint.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        buttonA = (Button) findViewById(R.id.buttonA);
+        buttonB = (Button) findViewById(R.id.buttonB);
+        buttonC = (Button) findViewById(R.id.buttonC);
+        buttonD = (Button) findViewById(R.id.buttonD);
+        buttonE = (Button) findViewById(R.id.buttonE);
+        buttonF = (Button) findViewById(R.id.buttonF);
+        buttonG = (Button) findViewById(R.id.buttonG);
+        buttonH = (Button) findViewById(R.id.buttonH);
+        buttonI = (Button) findViewById(R.id.buttonI);
+        buttonJ = (Button) findViewById(R.id.buttonJ);
+        buttonK = (Button) findViewById(R.id.buttonK);
+        buttonL = (Button) findViewById(R.id.buttonL);
+        buttonM = (Button) findViewById(R.id.buttonM);
+        buttonN = (Button) findViewById(R.id.buttonN);
+        buttonO = (Button) findViewById(R.id.buttonO);
+        buttonP = (Button) findViewById(R.id.buttonP);
+        buttonQ = (Button) findViewById(R.id.buttonQ);
+        buttonR = (Button) findViewById(R.id.buttonR);
+        buttonS = (Button) findViewById(R.id.buttonS);
+        buttonT = (Button) findViewById(R.id.buttonT);
+        buttonU = (Button) findViewById(R.id.buttonU);
+        buttonV = (Button) findViewById(R.id.buttonV);
+        buttonW = (Button) findViewById(R.id.buttonW);
+        buttonX = (Button) findViewById(R.id.buttonX);
+        buttonY = (Button) findViewById(R.id.buttonY);
+        buttonZ = (Button) findViewById(R.id.buttonZ);
+    }
+
+    private void guessButton(String uppercase, String lowercase, Button button) {
+        game.checkGuessOnePlayer(uppercase, lowercase);
+        button.setEnabled(false);
+    }
+
+    public void onClickButtons(View view) {
+        switch (view.getId()) {
+            case R.id.buttonHint:
                 game.setWordVowels();
                 buttonHint.setEnabled(false);
                 buttonA.setEnabled(false);
@@ -78,195 +114,89 @@ public class OnePlayer extends AppCompatActivity {
                 buttonO.setEnabled(false);
                 buttonU.setEnabled(false);
                 setDisplayWord(game.getWordUnderlines());
-            }
-        });
-
-        buttonA = (Button) findViewById(R.id.buttonA);
-        buttonA.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonA:
                 guessButton("A ", "a", buttonA);
-            }
-        });
-
-        buttonB = (Button) findViewById(R.id.buttonB);
-        buttonB.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonB:
                 guessButton("B ", "b", buttonB);
-            }
-        });
-
-        buttonC = (Button) findViewById(R.id.buttonC);
-        buttonC.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonC:
                 guessButton("C ", "c", buttonC);
-            }
-        });
-
-        buttonD = (Button) findViewById(R.id.buttonD);
-        buttonD.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonD:
                 guessButton("D ", "d", buttonD);
-            }
-        });
-
-        buttonE = (Button) findViewById(R.id.buttonE);
-        buttonE.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonE:
                 guessButton("E ", "e", buttonE);
-            }
-        });
-
-        buttonF = (Button) findViewById(R.id.buttonF);
-        buttonF.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonF:
                 guessButton("F ", "f", buttonF);
-            }
-        });
-
-        buttonG = (Button) findViewById(R.id.buttonG);
-        buttonG.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonG:
                 guessButton("G ", "g", buttonG);
-            }
-        });
-
-        buttonH = (Button) findViewById(R.id.buttonH);
-        buttonH.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonH:
                 guessButton("H ", "h", buttonH);
-            }
-        });
-
-        buttonI = (Button) findViewById(R.id.buttonI);
-        buttonI.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonI:
                 guessButton("I ", "i", buttonI);
-            }
-        });
-
-        buttonJ = (Button) findViewById(R.id.buttonJ);
-        buttonJ.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonJ:
                 guessButton("J ", "j", buttonJ);
-            }
-        });
-
-        buttonK = (Button) findViewById(R.id.buttonK);
-        buttonK.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonK:
                 guessButton("K ", "k", buttonK);
-            }
-        });
-
-        buttonL = (Button) findViewById(R.id.buttonL);
-        buttonL.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonL:
                 guessButton("L ", "l", buttonL);
-            }
-        });
-
-        buttonM = (Button) findViewById(R.id.buttonM);
-        buttonM.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonM:
                 guessButton("M ", "m", buttonM);
-            }
-        });
-
-        buttonN = (Button) findViewById(R.id.buttonN);
-        buttonN.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonN:
                 guessButton("N ", "n", buttonN);
-            }
-        });
-
-        buttonO = (Button) findViewById(R.id.buttonO);
-        buttonO.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonO:
                 guessButton("O ", "o", buttonO);
-            }
-        });
-
-        buttonP = (Button) findViewById(R.id.buttonP);
-        buttonP.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonP:
                 guessButton("P ", "p", buttonP);
-            }
-        });
-
-        buttonQ = (Button) findViewById(R.id.buttonQ);
-        buttonQ.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonQ:
                 guessButton("Q ", "q", buttonQ);
-            }
-        });
-
-        buttonR = (Button) findViewById(R.id.buttonR);
-        buttonR.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonR:
                 guessButton("R ", "r", buttonR);
-            }
-        });
-
-        buttonS = (Button) findViewById(R.id.buttonS);
-        buttonS.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonS:
                 guessButton("S ", "s", buttonS);
-            }
-        });
-
-        buttonT = (Button) findViewById(R.id.buttonT);
-        buttonT.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonT:
                 guessButton("T ", "t", buttonT);
-            }
-        });
-
-        buttonU = (Button) findViewById(R.id.buttonU);
-        buttonU.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonU:
                 guessButton("U ", "u", buttonU);
-            }
-        });
-
-        buttonV = (Button) findViewById(R.id.buttonV);
-        buttonV.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonV:
                 guessButton("V ", "v", buttonV);
-            }
-        });
-
-        buttonW = (Button) findViewById(R.id.buttonW);
-        buttonW.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonW:
                 guessButton("W ", "w", buttonW);
-            }
-        });
-
-        buttonX = (Button) findViewById(R.id.buttonX);
-        buttonX.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonX:
                 guessButton("X ", "x", buttonX);
-            }
-        });
-
-        buttonY = (Button) findViewById(R.id.buttonY);
-        buttonY.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonY:
                 guessButton("Y ", "y", buttonY);
-            }
-        });
-
-        buttonZ = (Button) findViewById(R.id.buttonZ);
-        buttonZ.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                break;
+            case R.id.buttonZ:
                 guessButton("Z ", "z", buttonZ);
-            }
-        });
-    }
-
-    private void guessButton(String uppercase, String lowercase, Button button) {
-        game.checkGuessOnePlayer(uppercase, lowercase);
-        button.setEnabled(false);
+                break;
+            default:
+                Snackbar.make(view, "Oh no! Something went wrong.", Snackbar.LENGTH_SHORT);
+                break;
+        }
     }
 
     public void setDisplayWord(String s) {
