@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="Hint"
         app:layout_constraintStart_toEndOf="@+id/buttonZ"
         app:layout_constraintTop_toBottomOf="@+id/buttonT" />
@@ -47,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="375dp"
+        android:onClick="onClickButtons"
         android:text="A"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="375dp"
+        android:onClick="onClickButtons"
         android:text="B"
         app:layout_constraintStart_toEndOf="@+id/buttonA"
         app:layout_constraintTop_toTopOf="parent" />
@@ -67,6 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="375dp"
+        android:onClick="onClickButtons"
         android:text="C"
         app:layout_constraintStart_toEndOf="@+id/buttonB"
         app:layout_constraintTop_toTopOf="parent" />
@@ -77,6 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="375dp"
+        android:onClick="onClickButtons"
         android:text="D"
         app:layout_constraintStart_toEndOf="@+id/buttonC"
         app:layout_constraintTop_toTopOf="parent" />
@@ -87,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="375dp"
+        android:onClick="onClickButtons"
         android:text="E"
         app:layout_constraintStart_toEndOf="@+id/buttonD"
         app:layout_constraintTop_toTopOf="parent" />
@@ -97,6 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="375dp"
+        android:onClick="onClickButtons"
         android:text="F"
         app:layout_constraintStart_toEndOf="@+id/buttonE"
         app:layout_constraintTop_toTopOf="parent" />
@@ -107,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="375dp"
+        android:onClick="onClickButtons"
         android:text="G"
         app:layout_constraintStart_toEndOf="@+id/buttonF"
         app:layout_constraintTop_toTopOf="parent" />
@@ -117,6 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="H"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonA" />
@@ -127,6 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="I"
         app:layout_constraintStart_toEndOf="@+id/buttonH"
         app:layout_constraintTop_toBottomOf="@+id/buttonB" />
@@ -137,6 +147,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="J"
         app:layout_constraintStart_toEndOf="@+id/buttonI"
         app:layout_constraintTop_toBottomOf="@+id/buttonC" />
@@ -147,6 +158,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="K"
         app:layout_constraintStart_toEndOf="@+id/buttonJ"
         app:layout_constraintTop_toBottomOf="@+id/buttonD" />
@@ -157,6 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="L"
         app:layout_constraintStart_toEndOf="@+id/buttonK"
         app:layout_constraintTop_toBottomOf="@+id/buttonE" />
@@ -167,6 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="M"
         app:layout_constraintStart_toEndOf="@+id/buttonL"
         app:layout_constraintTop_toBottomOf="@+id/buttonF" />
@@ -177,6 +191,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="N"
         app:layout_constraintStart_toEndOf="@+id/buttonM"
         app:layout_constraintTop_toBottomOf="@+id/buttonG" />
@@ -187,6 +202,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="O"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonH" />
@@ -197,6 +213,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="P"
         app:layout_constraintStart_toEndOf="@+id/buttonO"
         app:layout_constraintTop_toBottomOf="@+id/buttonI" />
@@ -207,6 +224,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="Q"
         app:layout_constraintStart_toEndOf="@+id/buttonP"
         app:layout_constraintTop_toBottomOf="@+id/buttonJ" />
@@ -217,6 +235,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="R"
         app:layout_constraintStart_toEndOf="@+id/buttonQ"
         app:layout_constraintTop_toBottomOf="@+id/buttonK" />
@@ -227,6 +246,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="S"
         app:layout_constraintStart_toEndOf="@+id/buttonR"
         app:layout_constraintTop_toBottomOf="@+id/buttonL" />
@@ -237,6 +257,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="T"
         app:layout_constraintStart_toEndOf="@+id/buttonS"
         app:layout_constraintTop_toBottomOf="@+id/buttonM" />
@@ -247,6 +268,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="U"
         app:layout_constraintStart_toEndOf="@+id/buttonT"
         app:layout_constraintTop_toBottomOf="@+id/buttonN" />
@@ -257,6 +279,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="V"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonO" />
@@ -267,6 +290,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="W"
         app:layout_constraintStart_toEndOf="@+id/buttonV"
         app:layout_constraintTop_toBottomOf="@+id/buttonP" />
@@ -277,6 +301,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="X"
         app:layout_constraintStart_toEndOf="@+id/buttonW"
         app:layout_constraintTop_toBottomOf="@+id/buttonQ" />
@@ -287,6 +312,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="Y"
         app:layout_constraintStart_toEndOf="@+id/buttonX"
         app:layout_constraintTop_toBottomOf="@+id/buttonR" />
@@ -297,6 +323,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="onClickButtons"
         android:text="Z"
         app:layout_constraintStart_toEndOf="@+id/buttonY"
         app:layout_constraintTop_toBottomOf="@+id/buttonS" />
