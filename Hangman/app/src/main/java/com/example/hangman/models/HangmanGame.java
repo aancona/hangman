@@ -1,27 +1,45 @@
-package com.example.hangman;
+package com.example.hangman.models;
+
+import android.content.Context;
+
+import com.example.hangman.presenters.IGamePresenter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class HangmanGame {
     private String word;
     private int guesses;
     private ArrayList<String> guessedLetters = new ArrayList<>();
-    private OnePlayer onePlayer;
-    private TwoPlayer twoPlayer;
+    private IGamePresenter presenter;
+    private Context context;
+    private Set<String> masterWordBank;
+    private Set<String> userWordBank;
 
 
-    public HangmanGame(String word, TwoPlayer twoPlayer) {
-        this.word = word.toLowerCase();
-        this.twoPlayer = twoPlayer;
+    public HangmanGame() {
         guesses = 0;
     }
 
-    public HangmanGame(OnePlayer onePlayer) {
-        this.onePlayer = onePlayer;
+    public HangmanGame(Context context, IGamePresenter presenter) {
+        this.context = context;
+        this.presenter = presenter;
         guesses = 0;
-        chooseWord();
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word.toLowerCase();
+    }
+
+    public void updateWord(String word) {
+        this.word = word;
     }
 
     private void chooseWord() {
@@ -136,51 +154,57 @@ public class HangmanGame {
 
         Random rand = new Random();
         word = wordBank.get(rand.nextInt(wordBank.size()));
+
     }
 
     public String getWordUnderlines() {
         return word.replaceAll("[a-z]", "_ ");
     }
 
-    public void checkGuessOnePlayer(String uppercase, String lowercase) {
-        //if guess is incorrect
-        if (!(word.contains(lowercase))) {
-            //incrementGuesses();
-            guesses++;
-            onePlayer.changeImage(guesses);
-        }
-        //if guess is correct
-        else {
-            word = word.replaceAll(lowercase, uppercase);
-            onePlayer.setDisplayWord(getWordUnderlines());
-
-            //if player has won
-            if (word.matches("(.*)[a-z](.*)") == false) {
-                onePlayer.createPopup("You win!");
-            }
-        }
-        guessedLetters.add(lowercase);
+    public void populateMasterWordBank() {
+        masterWordBank = new HashSet<>();
+        masterWordBank.add("able");
+        masterWordBank.add("about");
+        masterWordBank.add("account");
+        masterWordBank.add("acid");
+        masterWordBank.add("across");
+        masterWordBank.add("act");
+        masterWordBank.add("addition");
+        masterWordBank.add("adjustment");
+        masterWordBank.add("advertisement");
+        masterWordBank.add("after");
     }
 
-    public void checkGuessTwoPlayer(String uppercase, String lowercase) {
-        //if guess is incorrect
-        if (!(word.contains(lowercase))) {
-            //incrementGuesses();
-            guesses++;
-            twoPlayer.changeImage(guesses);
-        }
+    public void setRandomWord() {
+        ArrayList<String> userWordList = new ArrayList<>();
+        userWordList.addAll(userWordBank);
 
-        //if guess is correct
-        else {
-            word = word.replaceAll(lowercase, uppercase);
-            twoPlayer.setDisplayWord(getWordUnderlines());
+        Random rand = new Random();
+        word = userWordList.get(rand.nextInt(userWordList.size()));
 
-            //if player has won
-            if (word.matches("(.*)[a-z](.*)") == false) {
-                twoPlayer.createPopup("You win!");
-            }
+    }
+
+    public void setUserWordBank(Set<String> wordList) {
+        userWordBank = masterWordBank;
+        for (String s : wordList) {
+            userWordBank.remove(s);
         }
-        guessedLetters.add(lowercase);
+    }
+
+    public Set<String> getUserWordBank() {
+        return userWordBank;
+    }
+
+    public void incrementGuesses() {
+        guesses++;
+    }
+
+    public int getGuesses() {
+        return guesses;
+    }
+
+    public void updateGuessedLetters(String letter) {
+        guessedLetters.add(letter);
     }
 
     public String getWordUppercase() {

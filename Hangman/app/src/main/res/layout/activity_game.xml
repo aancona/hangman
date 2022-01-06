@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".OnePlayer">
+    android:id="@+id/gameActivityView"
+    tools:context=".views.GameActivity">
 
     <Button
         android:id="@+id/buttonHint"
