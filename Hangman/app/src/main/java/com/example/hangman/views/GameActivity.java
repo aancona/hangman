@@ -18,6 +18,8 @@ import com.example.hangman.R;
 import com.example.hangman.presenters.GamePresenter;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,6 +55,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     private Button buttonHint;
     private SharedPreferences sharedPreferences;
     private GamePresenter gamePresenter;
+    private Set<String> guessedLetters = new HashSet<>();
 
 
     @Override
@@ -69,17 +72,117 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         gamePresenter = new GamePresenter(this, getApplicationContext());
 
-        //TODO: fix this, it will always return home because the word hasn't been set yet
-        if ( (gamePresenter.getWord() != null)) {
-            initializeViews();
-            gamePresenter.startGame(onePlayer, userWord, wordList);
+        initializeViews();
+        gamePresenter.startGame(onePlayer, userWord, wordList);
 
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("CURRENT_WORD", gamePresenter.getWord());
+//        editor.putBoolean("GAME_ACTIVE", true);
+//        editor.apply();
+
+        //TODO: if continuing game, fill in letters, remove buttons, update to current image
+        if (sharedPreferences.getBoolean("GAME_ACTIVE", false)) {
+            //ArrayList<String> guessedLetters = gamePresenter.getGuessedLetters();
+            Set<String> guessedLetters = sharedPreferences.getStringSet("GUESSED_LETTERS", new HashSet<>());
+            //int previousGuesses = guessedLetters.size();
+            for (String s : guessedLetters) {
+                switch(s) {
+                    case "hint":
+                        buttonHint.performClick();
+                        //previousGuesses--;
+                        break;
+                    case "a":
+                        buttonA.performClick();
+                        break;
+                    case "b":
+                        buttonB.performClick();
+                        break;
+                    case "c":
+                        buttonC.performClick();
+                        break;
+                    case "d":
+                        buttonD.performClick();
+                        break;
+                    case "e":
+                        buttonE.performClick();
+                        break;
+                    case "f":
+                        buttonF.performClick();
+                        break;
+                    case "g":
+                        buttonG.performClick();
+                        break;
+                    case "h":
+                        buttonH.performClick();
+                        break;
+                    case "i":
+                        buttonI.performClick();
+                        break;
+                    case "j":
+                        buttonJ.performClick();
+                        break;
+                    case "k":
+                        buttonK.performClick();
+                        break;
+                    case "l":
+                        buttonL.performClick();
+                        break;
+                    case "m":
+                        buttonM.performClick();
+                        break;
+                    case "n":
+                        buttonN.performClick();
+                        break;
+                    case "o":
+                        buttonO.performClick();
+                        break;
+                    case "p":
+                        buttonP.performClick();
+                        break;
+                    case "q":
+                        buttonQ.performClick();
+                        break;
+                    case "r":
+                        buttonR.performClick();
+                        break;
+                    case "s":
+                        buttonS.performClick();
+                        break;
+                    case "t":
+                        buttonT.performClick();
+                        break;
+                    case "u":
+                        buttonU.performClick();
+                        break;
+                    case "v":
+                        buttonV.performClick();
+                        break;
+                    case "w":
+                        buttonW.performClick();
+                        break;
+                    case "x":
+                        buttonX.performClick();
+                        break;
+                    case "y":
+                        buttonY.performClick();
+                        break;
+                    case "z":
+                        buttonZ.performClick();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+        }
+        else {
+//            initializeViews();
+//            gamePresenter.startGame(onePlayer, userWord, wordList);
+//
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("CURRENT_WORD", gamePresenter.getWord());
             editor.putBoolean("GAME_ACTIVE", true);
             editor.apply();
-        } else {
-            returnHome();
         }
     }
 
@@ -118,6 +221,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
     private void guessButton(String lowercase, Button button) {
         gamePresenter.checkGuess(lowercase);
         button.setEnabled(false);
+        saveGuessedLetter(lowercase);
     }
 
     @Override
@@ -163,6 +267,7 @@ public class GameActivity extends AppCompatActivity implements IGameView {
                 buttonO.setEnabled(false);
                 buttonU.setEnabled(false);
                 setDisplayWord(gamePresenter.getWordUnderlines());
+                saveGuessedLetter("hint");
                 break;
             case R.id.buttonA:
                 guessButton("a", buttonA);
@@ -248,6 +353,14 @@ public class GameActivity extends AppCompatActivity implements IGameView {
         }
     }
 
+    public void saveGuessedLetter(String letter) {
+        guessedLetters.add(letter);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putStringSet("GUESSED_LETTERS", guessedLetters);
+        editor.apply();
+    }
+
     @Override
     public void onPlayerWin() {
         Set<String> wordList = sharedPreferences.getStringSet("COMPLETED_WORDS", new HashSet<>());
@@ -255,6 +368,8 @@ public class GameActivity extends AppCompatActivity implements IGameView {
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putStringSet("COMPLETED_WORDS", wordList);
+        editor.putStringSet("GUESSED_LETTERS", new HashSet<>());
+        //editor.remove("GUESSED_LETTERS");
         editor.putString("CURRENT_WORD", null);
         editor.putBoolean("GAME_ACTIVE", false);
 

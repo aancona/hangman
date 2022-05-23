@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.hangman.models.HangmanGame;
 import com.example.hangman.views.IGameView;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class GamePresenter implements IGamePresenter{
@@ -28,12 +29,11 @@ public class GamePresenter implements IGamePresenter{
                 //model.setWord("test");
                 view.createSnackbar("You are out of words!");
                 view.returnHome();
+            } else if (userWord != null) {
+                model.setWord(userWord);
             } else {
                 model.setRandomWord();
-
             }
-
-
         } else {
             model.setWord(userWord);
         }
@@ -48,6 +48,7 @@ public class GamePresenter implements IGamePresenter{
     @Override
     public void setWordVowels() {
         model.setWordVowels();
+        model.updateGuessedLetters("vowels");
     }
 
     @Override
@@ -58,6 +59,11 @@ public class GamePresenter implements IGamePresenter{
     @Override
     public String getWord() {
         return model.getWord();
+    }
+
+    @Override
+    public ArrayList<String> getGuessedLetters() {
+        return model.getGuessedLetters();
     }
 
     @Override

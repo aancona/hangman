@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button continueButton;
     EditText editText;
     TextView textView;
+    TextView greeting;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -86,18 +87,84 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.textView2);
         textView.setVisibility(View.GONE);
+
+        greeting = findViewById(R.id.textView);
+        greeting.setText("Hello, " + sharedPreferences.getString("USER_NAME", "guest") + "!");
     }
 
     public void onePlayerButton(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("ONE_PLAYER", true);
-        startActivity(intent);
+        if (sharedPreferences.getString("CURRENT_WORD", null) != null) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(this);
+
+            FrameLayout frameLayout = new FrameLayout(this);
+            //frameLayout.setPaddingRelative(45, 15, 45, 0);
+
+            popup.setView(frameLayout);
+            popup.setTitle("Are you sure?");
+            popup.setMessage("You already have an active game. If you start a new game now, then your progress in the previous game will be lost.");
+            popup.setPositiveButton(R.string.popup_positive, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //dialogInterface.cancel();
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putStringSet("GUESSED_LETTERS", new HashSet<String>());
+                    editor.apply();
+                    Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                    intent.putExtra("ONE_PLAYER", true);
+                    startActivity(intent);
+                }
+            });
+            popup.setNegativeButton(R.string.popup_negative, new DialogInterface.OnClickListener() {
+               @Override
+               public void onClick(DialogInterface dialogInterface, int i) {
+                   dialogInterface.cancel();
+               }
+            });
+
+            AlertDialog alertDialog = popup.create();
+            alertDialog.show();
+        }
+        else {
+            Intent intent = new Intent(this, GameActivity.class);
+            intent.putExtra("ONE_PLAYER", true);
+            startActivity(intent);
+        }
     }
 
     public void twoPlayerButton(View view) {
-        editText.setVisibility(View.VISIBLE);
-        submitButton.setVisibility(View.VISIBLE);
-        textView.setVisibility(View.VISIBLE);
+        if (sharedPreferences.getString("CURRENT_WORD", null) != null) {
+            AlertDialog.Builder popup = new AlertDialog.Builder(this);
+
+            FrameLayout frameLayout = new FrameLayout(this);
+            //frameLayout.setPaddingRelative(45, 15, 45, 0);
+
+            popup.setView(frameLayout);
+            popup.setTitle("Are you sure?");
+            popup.setMessage("You already have an active game. If you start a new game now, then your progress in the previous game will be lost.");
+            popup.setPositiveButton(R.string.popup_positive, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                    editText.setVisibility(View.VISIBLE);
+                    submitButton.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.VISIBLE);
+                }
+            });
+            popup.setNegativeButton(R.string.popup_negative, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+
+            AlertDialog alertDialog = popup.create();
+            alertDialog.show();
+        }
+        else {
+            editText.setVisibility(View.VISIBLE);
+            submitButton.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.VISIBLE);
+        }
     }
 
     public void submitButton(View view) {

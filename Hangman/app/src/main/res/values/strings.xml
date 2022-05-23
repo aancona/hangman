@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Hangman</string>
     <string name="ok">OK</string>
+    <string name="popup_positive">Start a new game</string>
+    <string name="popup_negative">Back</string>
     <string name="one_player">1 Player</string>
     <string name="two_player">2 Players</string>
 
